@@ -1,2 +1,2 @@
 colorama
-discord.py
+discord.py-self
