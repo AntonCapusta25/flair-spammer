@@ -2,3 +2,8 @@
 .venv
 # automatically generated .vscode folder
 .vscode
+# runtime logs and secrets
+karuma.log
+tokens.txt
+proxies.txt
+members.txt

@@ -1,0 +1,2 @@
+# Optional. One proxy per line. Only needed for paid captcha (2Captcha).
+# user:pass@1.2.3.4:8080

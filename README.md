@@ -1,29 +1,100 @@
-# Karuma
+# Karuma — how to start
 
-![](https://github.com/hoemotion/Karuma/blob/main/karuma.png?raw=true)
-> Little preview of the bot and the embed
-                
-				
-![](https://img.shields.io/badge/release-v2.0-blue)
+Tool that logs into Discord with **your account** and lets you scrape members, send mass DMs, etc.
 
+---
 
+## Step 1 — Install
 
-### Features
+Open terminal in this folder:
 
-- Nuke Discord Servers
-- Raid Discord Servers
-- Mass DM
-- Mass DM Client Users (Sends every Client User a DM)
-- List all Servers
-- Leave all Servers
+```bash
+pip install -r requirements.txt
+```
 
-### Don't forget to leave a Star!
+---
 
-- Share this repo with your friends and leave a star ⭐️
+## Step 2 — Add your token
 
-## Having Issues?
-- Contact me on Telegram:
+Create a file named **`tokens.txt`** in this folder.
 
-<a href = "https://t.me/ahegahoe"><img src="https://img.icons8.com/color/48/000000/telegram-app--v5.png"/></a>
+Put your Discord token inside (one line, nothing else):
 
-## Please use this tool for educational purposes only
+```
+paste_your_token_here
+```
+
+**Do not put the token in config.json.** Only `tokens.txt`.
+
+Multiple accounts? One token per line.
+
+---
+
+## Step 3 — Run
+
+```bash
+python -m karuma
+```
+
+Pick a number from the menu.
+
+---
+
+## What each file is
+
+| File | What it is | Need it? |
+|------|------------|----------|
+| `tokens.txt` | Your Discord login token | **Yes** |
+| `config.json` | Delays, captcha settings | Already there, optional to edit |
+| `proxies.txt` | Proxies (one per line) | No — only if you use paid captcha |
+| `members.txt` | List of user IDs to DM | No — created when you scrape |
+
+---
+
+## Menu (what the numbers do)
+
+| # | What happens |
+|---|----------------|
+| 1 | Destroy a server (ban, delete channels…) |
+| 2 | Spam a server (channels, roles, nicknames) |
+| 3 | DM everyone in one server |
+| 4 | DM all users your account can see |
+| 5 | DM users from `members.txt` |
+| 6 | Save server member IDs to `members.txt` (fast) |
+| 7 | Save active user IDs from chat history (slow) |
+| 8 | Show your servers |
+| 9 | Leave all servers |
+| 10 | Quit |
+
+---
+
+## config.json — only change if you need to
+
+Most people leave it alone. Important fields:
+
+```json
+{
+  "minimum_dm_delay": 50,
+  "maximum_dm_delay": 70,
+  "captcha_service": "manual"
+}
+```
+
+- **Delays** — seconds to wait between messages/actions (higher = safer, slower).
+- **captcha_service** — `"manual"` = solve captcha in browser. Use `"2captcha"` only if you pay for 2Captcha.
+
+Ignore `x_super_properties` — leave it empty or delete the line.
+
+---
+
+## Problems?
+
+| Error | Fix |
+|-------|-----|
+| No tokens found | Create `tokens.txt` with your token |
+| Invalid token | Token is wrong or expired — get a new one |
+| Captcha loop | Set `"captcha_service": "manual"` in config.json |
+
+More detail: [docs/](docs/) folder (optional).
+
+**Warning:** This breaks Discord rules. Your account can get banned.
