@@ -7,3 +7,4 @@ karuma.log
 tokens.txt
 proxies.txt
 members.txt
+.pytest_cache

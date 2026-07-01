@@ -95,6 +95,15 @@ Ignore `x_super_properties` — leave it empty or delete the line.
 | Invalid token | Token is wrong or expired — get a new one |
 | Captcha loop | Set `"captcha_service": "manual"` in config.json |
 
+## Tests
+
+```bash
+pip install -r requirements-dev.txt
+python -m pytest -v
+```
+
+32 unit tests — config, utils, CLI, permissions, logging, captcha helpers. No live Discord connection.
+
 More detail: [docs/](docs/) folder (optional).
 
 **Warning:** This breaks Discord rules. Your account can get banned.

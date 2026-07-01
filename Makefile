@@ -1,4 +1,4 @@
-.PHONY: help install run menu clean check compile venv list-servers setup
+.PHONY: help install install-dev run menu clean check compile venv list-servers setup test
 
 PYTHON   ?= python
 PIP      ?= $(PYTHON) -m pip
@@ -10,7 +10,8 @@ help:
 	@echo Karuma — available targets:
 	@echo.
 	@echo   make setup          Copy examples/*.example to project root (skip existing)
-	@echo   make install        Install dependencies into current Python
+	@echo   make install-dev    Install runtime + test dependencies
+	@echo   make test           Run pytest
 	@echo   make venv           Create .venv and install dependencies
 	@echo   make run            Start interactive menu (alias: menu)
 	@echo   make list-servers   List connected Discord servers
@@ -28,6 +29,12 @@ pairs=[('config.json.example','config.json'),('tokens.txt.example','tokens.txt')
 
 install:
 	$(PIP) install -r requirements.txt
+
+install-dev:
+	$(PIP) install -r requirements-dev.txt
+
+test:
+	$(PY) -m pytest -v
 
 venv: $(VENV)/Scripts/python.exe
 	$(BIN)/python -m pip install -r requirements.txt
